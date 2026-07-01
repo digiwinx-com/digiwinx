@@ -1,913 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DigiWinx — Grow Without Limits</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DigiWinx — Digital Growth for Small Business</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
   <style>
-    /* ═══════════════════════════
-       DESIGN TOKENS
-       Edit these to retheme.
-    ═══════════════════════════ */
     :root {
-      --green:       #6BBF00;
-      --green-light: #EEF7DC;
-      --black:       #1A1A1A;
-      --body-text:   #4A4A4A;
-      --light-text:  #8A8A8A;
-      --white:       #FFFFFF;
-      --surface:     #F8F8F6;
-      --border:      #E8E8E4;
+      --green:   #6DC000;
+      --green-d: #4E8C00;
+      --lime:    #D8F57A;
+      --ink:     #1A1A1A;
+      --body:    #3D3D3D;
+      --muted:   #777;
+      --white:   #FFFFFF;
+      --cream:   #FFFEF5;
+      --sand:    #F5F0E4;
+      --sage:    #EBF5D5;
+      --border:  #E0DAC8;
+      --yellow:  #FFF3A3;
+      --coral:   #FFE8DC;
 
-      --font-serif: 'DM Serif Display', Georgia, serif;
-      --font-sans:  'DM Sans', system-ui, sans-serif;
-
-      --radius: 6px;
-      --section-pad: 96px;
+      --sans: 'Nunito', system-ui, sans-serif;
+      --serif: 'DM Serif Display', Georgia, serif;
     }
 
-    /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--white);
-      color: var(--body-text);
-      font-family: var(--font-sans);
+      background: var(--sand);
+      color: var(--body);
+      font-family: var(--sans);
       font-size: 16px;
       line-height: 1.7;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
 
     /* ── NAV ── */
     nav {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.94);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 25px;
+      position: sticky; top: 0; z-index: 100;
+      background: var(--ink);
     }
     .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 40px;
+      max-width: 1080px; margin: 0 auto;
+      padding: 0 40px; height: 62px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 1.1rem;
-      letter-spacing: -0.01em;
-      color: var(--black);
-    }
-    .nav-logo .star {
-      color: var(--green);
-      font-size: 1.2rem;
-      transition: transform 0.5s ease;
-      display: inline-block;
-    }
-    .nav-logo:hover .star { transform: rotate(60deg); }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 400;
-      color: var(--light-text);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--black); }
-    .nav-cta {
-      background: var(--black);
+    .logo {
+      font-family: var(--sans);
+      font-weight: 900; font-size: 1.15rem;
       color: var(--white);
-      font-family: var(--font-sans);
-      font-weight: 500;
-      font-size: 0.875rem;
-      padding: 9px 20px;
-      border-radius: var(--radius);
-      transition: background 0.2s;
-      letter-spacing: 0.01em;
+      display: flex; align-items: center; gap: 8px;
+      letter-spacing: -0.01em;
     }
-    .nav-cta:hover { background: var(--green); color: var(--black); }
-    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--black); }
+    .logo-star { color: var(--green); font-size: 1.3rem; display: inline-block; transition: transform 0.4s ease; }
+    .logo:hover .logo-star { transform: rotate(90deg); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-btn {
+      background: var(--green); color: var(--white);
+      font-family: var(--sans); font-weight: 800; font-size: 0.85rem;
+      padding: 9px 20px; border-radius: 100px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-btn:hover { background: var(--green-d); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+    .mob-menu {
+      display: none; flex-direction: column;
+      background: var(--ink); padding: 12px 40px 20px;
+      border-bottom: 2px solid var(--green);
+    }
+    .mob-menu a { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.7); padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: block; }
+    .mob-menu a:last-child { border: none; color: var(--green); font-weight: 800; }
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 64px;
-      background: var(--white);
-    }
-    .hero-content {
-      padding: 88px 40px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .hero-label {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .hero-label::before {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--green);
-      flex-shrink: 0;
-    }
-    h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.8rem, 6.5vw, 5.8rem);
-      font-weight: 400;
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      color: var(--black);
-      max-width: 760px;
-      margin-bottom: 28px;
-    }
-    h1 em {
-      font-style: italic;
-      color: var(--green);
-    }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--body-text);
-      max-width: 480px;
-      line-height: 1.75;
-      margin-bottom: 44px;
-      font-weight: 300;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .btn-primary {
-      background: var(--green);
-      color: var(--white);
-      font-family: var(--font-sans);
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 13px 28px;
-      border-radius: var(--radius);
-      transition: background 0.2s, transform 0.15s;
-      display: inline-block;
-      letter-spacing: 0.01em;
-    }
-    .btn-primary:hover { background: #5aaa00; transform: translateY(-1px); }
-    .btn-outline {
-      color: var(--black);
-      font-family: var(--font-sans);
-      font-weight: 400;
-      font-size: 0.9rem;
-      padding: 13px 28px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: border-color 0.2s, background 0.2s;
-      display: inline-block;
-    }
-    .btn-outline:hover { border-color: var(--black); background: var(--surface); }
-    .hero-stats {
-      display: flex;
-      gap: 48px;
-      margin-top: 64px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .stat-val {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      color: var(--black);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .stat-val sup { font-size: 1rem; color: var(--green); vertical-align: super; }
-    .stat-lbl {
-      font-size: 0.78rem;
-      color: var(--light-text);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    /* ── TICKER ── */
-    .ticker {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 0;
+      background: var(--ink);
+      padding: 80px 40px 72px;
+      position: relative;
       overflow: hidden;
-      white-space: nowrap;
     }
-    .ticker-track {
-      display: inline-flex;
-      animation: ticker 28s linear infinite;
-    }
-    .ticker-track span {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--light-text);
-      padding: 0 24px;
-    }
-    .ticker-track .sep { color: var(--green); padding: 0; font-size: 0.6rem; }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ── SHARED SECTION ── */
-    section { padding: var(--section-pad) 0; }
-
-    .eyebrow {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 16px;
-    }
-    h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(1.9rem, 3.5vw, 3rem);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      line-height: 1.15;
-      color: var(--black);
-      margin-bottom: 18px;
-    }
-    h2 em { font-style: italic; color: var(--green); }
-    .lead {
-      color: var(--body-text);
-      font-size: 1rem;
-      max-width: 460px;
-      line-height: 1.75;
-      font-weight: 300;
-    }
-    hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
-
-    /* ── SERVICES ── */
-    #services { background: var(--surface); }
-    .services-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 32px;
-      margin-bottom: 52px;
-      flex-wrap: wrap;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .svc {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 28px;
-      transition: box-shadow 0.25s, border-color 0.25s;
-    }
-    .svc:hover {
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-      border-color: #c8e08c;
-    }
-    .svc-icon {
-      width: 36px;
-      height: 36px;
-      color: var(--green);
-      margin-bottom: 20px;
-    }
-    .svc-name {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--black);
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-    .svc-desc {
-      font-size: 0.875rem;
-      color: var(--body-text);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-    .svc-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-top: 20px;
-    }
-    .tag {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--green);
-      background: var(--green-light);
-      padding: 3px 8px;
-      border-radius: 3px;
-    }
-
-    /* ── PROCESS ── */
-    #process { background: var(--white); }
-    .process-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 56px;
-      border-top: 1px solid var(--border);
-    }
-    .proc {
-      padding: 36px 28px 36px 0;
-      border-right: 1px solid var(--border);
-    }
-    .proc:last-child { border-right: none; padding-right: 0; }
-    .proc:not(:first-child) { padding-left: 28px; }
-    .proc-n {
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
-      color: var(--border);
-      line-height: 1;
-      margin-bottom: 16px;
-      transition: color 0.3s;
-    }
-    .proc:hover .proc-n { color: var(--green); }
-    .proc-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--black);
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-    .proc-desc { font-size: 0.85rem; color: var(--body-text); line-height: 1.7; font-weight: 300; }
-
-    /* ── WHY ── */
-    #why { background: var(--surface); }
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .why-left h2 { margin-bottom: 36px; }
-    .why-points { display: flex; flex-direction: column; gap: 24px; }
-    .why-pt {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
-    .why-pt:last-child { border-bottom: none; padding-bottom: 0; }
-    .why-pt-dot {
-      width: 7px;
-      height: 7px;
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
       border-radius: 50%;
-      background: var(--green);
-      margin-top: 8px;
-      flex-shrink: 0;
+      background: radial-gradient(circle, rgba(109,192,0,0.18) 0%, transparent 65%);
+      pointer-events: none;
     }
-    .why-pt-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--black);
-      margin-bottom: 4px;
+    .hero-inner { max-width: 1080px; margin: 0 auto; position: relative; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(109,192,0,0.15);
+      border: 1px solid rgba(109,192,0,0.3);
+      color: var(--lime);
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 32px;
     }
-    .why-pt-desc { font-size: 0.875rem; color: var(--body-text); line-height: 1.7; font-weight: 300; }
-    .why-right {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .why-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-    }
-    .why-card-num {
-      font-family: var(--font-serif);
-      font-size: 2.4rem;
-      color: var(--black);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .why-card-num sup { font-size: 1rem; color: var(--green); }
-    .why-card-lbl { font-size: 0.8rem; color: var(--light-text); letter-spacing: 0.05em; text-transform: uppercase; }
-
-    /* ── TESTIMONIALS ── */
-    #testimonials { background: var(--white); }
-    .test-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 52px;
-    }
-    .test-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 26px;
-    }
-    .test-stars { color: var(--green); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 16px; }
-    .test-quote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--black);
-      line-height: 1.65;
+    .hero-badge span { width: 6px; height: 6px; background: var(--green); border-radius: 50%; display: block; }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 700px;
       margin-bottom: 24px;
     }
-    .test-author { display: flex; align-items: center; gap: 12px; }
-    .test-avatar {
-      width: 36px; height: 36px;
-      background: var(--green-light);
-      color: var(--green);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 0.78rem;
+    .hero-h1 em { font-style: italic; color: var(--green); }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,0.55);
+      max-width: 480px; line-height: 1.78;
+      font-weight: 400; margin-bottom: 40px;
     }
-    .test-name { font-weight: 600; font-size: 0.875rem; color: var(--black); }
-    .test-role { font-size: 0.78rem; color: var(--light-text); margin-top: 2px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+    .btn-green {
+      background: var(--green); color: var(--white);
+      font-weight: 800; font-size: 0.95rem;
+      padding: 14px 30px; border-radius: 100px;
+      display: inline-block; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-green:hover { background: var(--green-d); transform: translateY(-1px); }
+    .btn-ghost-white {
+      color: var(--white); font-weight: 600; font-size: 0.95rem;
+      padding: 14px 30px; border-radius: 100px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      display: inline-block; transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost-white:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+    .hero-stats {
+      display: flex; gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 40px; flex-wrap: wrap;
+    }
+    .hstat {
+      flex: 1; min-width: 120px;
+      padding-right: 32px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .hstat:last-child { border-right: none; }
+    .hstat:not(:first-child) { padding-left: 32px; }
+    .hstat-val {
+      font-family: var(--serif);
+      font-size: 2.4rem; color: var(--white); line-height: 1; margin-bottom: 4px;
+    }
+    .hstat-val em { font-style: normal; color: var(--green); font-size: 1.4rem; }
+    .hstat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.02em; }
+
+    /* ── SERVICES ── */
+    #services { padding: 88px 40px; background: var(--sand); }
+    .sec-tag {
+      font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--green-d); margin-bottom: 10px;
+    }
+    .sec-h {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      font-weight: 400; color: var(--ink);
+      line-height: 1.2; letter-spacing: -0.01em;
+      margin-bottom: 48px;
+    }
+    .sec-h em { font-style: italic; color: var(--green); }
+    .svc-grid {
+      max-width: 1080px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .svc-card {
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 2px solid transparent;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
+    .svc-card.c1 { background: var(--sage); border-color: #C8E896; }
+    .svc-card.c2 { background: var(--yellow); border-color: #EEE080; }
+    .svc-card.c3 { background: var(--coral); border-color: #FFCFB8; }
+    .svc-card.c4 { background: var(--cream); border-color: var(--border); }
+    .svc-card.c5 { background: #EEF2FF; border-color: #C8D0F5; }
+    .svc-card.c6 { background: #FFF0F5; border-color: #F5C0D0; }
+    .svc-ico {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px; color: var(--ink);
+    }
+    .svc-ico svg { width: 22px; height: 22px; }
+    .svc-name { font-weight: 800; font-size: 1rem; color: var(--ink); margin-bottom: 8px; }
+    .svc-desc { font-size: 0.875rem; color: var(--body); line-height: 1.7; }
+    .svc-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 16px; }
+    .pill {
+      font-size: 0.68rem; font-weight: 700;
+      color: var(--ink); background: rgba(255,255,255,0.65);
+      padding: 3px 9px; border-radius: 100px;
+    }
+
+    /* ── INTRO BAND ── */
+    .intro-band {
+      background: var(--green);
+      padding: 56px 40px;
+    }
+    .intro-band-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+    }
+    .intro-band h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 400; color: var(--white);
+      line-height: 1.25; letter-spacing: -0.01em;
+    }
+    .intro-band h2 em { font-style: italic; }
+    .intro-band p { font-size: 0.95rem; color: rgba(255,255,255,0.78); line-height: 1.8; }
+
+    /* ── PROCESS ── */
+    #process { background: var(--ink); padding: 88px 40px; }
+    #process .sec-tag { color: var(--lime); }
+    #process .sec-h { color: var(--white); }
+    .proc-grid {
+      max-width: 1080px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; overflow: hidden;
+    }
+    .proc-step {
+      padding: 36px 28px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.2s;
+    }
+    .proc-step:last-child { border-right: none; }
+    .proc-step:hover { background: rgba(255,255,255,0.04); }
+    .proc-num {
+      width: 38px; height: 38px;
+      background: rgba(109,192,0,0.15);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 1.2rem; color: var(--green);
+      margin-bottom: 18px;
+    }
+    .proc-title { font-weight: 800; font-size: 0.95rem; color: var(--white); margin-bottom: 8px; }
+    .proc-desc { font-size: 0.825rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+    /* ── WHY ── */
+    #why { background: var(--sand); padding: 88px 40px; }
+    .why-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .why-lead { font-size: 0.95rem; color: var(--body); line-height: 1.8; margin-bottom: 36px; }
+    .why-pts { display: flex; flex-direction: column; }
+    .why-pt { display: flex; gap: 14px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .why-pt:first-child { padding-top: 0; }
+    .why-pt:last-child { border-bottom: none; }
+    .why-ico {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--green); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 900; flex-shrink: 0; margin-top: 2px;
+    }
+    .why-pt-title { font-weight: 800; font-size: 0.9rem; color: var(--ink); margin-bottom: 3px; }
+    .why-pt-desc { font-size: 0.825rem; color: var(--body); line-height: 1.65; }
+    .why-right { display: flex; flex-direction: column; gap: 14px; padding-top: 44px; }
+    .stat-card {
+      border-radius: 16px; padding: 24px 22px;
+      display: flex; gap: 16px; align-items: center;
+    }
+    .stat-card.s1 { background: var(--sage); }
+    .stat-card.s2 { background: var(--yellow); }
+    .stat-card.s3 { background: var(--coral); }
+    .stat-card.s4 { background: var(--lime); }
+    .stat-num { font-family: var(--serif); font-size: 2.4rem; color: var(--ink); line-height: 1; white-space: nowrap; }
+    .stat-num em { font-style: normal; color: var(--green-d); font-size: 1.2rem; }
+    .stat-lbl { font-size: 0.825rem; color: var(--body); line-height: 1.4; font-weight: 600; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--cream); padding: 88px 40px; }
+    .test-grid { max-width: 1080px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .test-card { background: var(--white); border: 2px solid var(--border); border-radius: 20px; padding: 32px 26px; display: flex; flex-direction: column; }
+    .test-stars { font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 14px; color: var(--green); }
+    .test-q { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink); line-height: 1.65; flex: 1; margin-bottom: 22px; }
+    .test-author { display: flex; align-items: center; gap: 11px; }
+    .test-av { width: 38px; height: 38px; border-radius: 50%; background: var(--sage); color: var(--green-d); font-weight: 800; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; }
+    .test-name { font-weight: 800; font-size: 0.875rem; color: var(--ink); }
+    .test-role { font-size: 0.775rem; color: var(--muted); margin-top: 1px; }
 
     /* ── CTA ── */
-    #cta {
-      background: var(--black);
-      padding: var(--section-pad) 0;
-      text-align: center;
+    #cta { background: var(--green); padding: 88px 40px; }
+    .cta-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap; }
+    .cta-h { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 400; color: var(--white); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .cta-h em { font-style: italic; }
+    .cta-sub { font-size: 0.9rem; color: rgba(255,255,255,0.7); max-width: 380px; line-height: 1.7; }
+    .btn-dark {
+      background: var(--ink); color: var(--white);
+      font-weight: 800; font-size: 0.95rem;
+      padding: 16px 34px; border-radius: 100px;
+      display: inline-block; white-space: nowrap; flex-shrink: 0;
+      transition: transform 0.15s, opacity 0.2s;
     }
-    #cta .eyebrow { color: var(--green); }
-    #cta h2 { color: var(--white); margin-bottom: 14px; }
-    #cta h2 em { color: var(--green); }
-    #cta p { color: #888; font-size: 0.95rem; max-width: 440px; margin: 0 auto 36px; line-height: 1.7; font-weight: 300; }
-    .btn-cta {
-      background: var(--green);
-      color: var(--white);
-      font-family: var(--font-sans);
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 14px 32px;
-      border-radius: var(--radius);
-      display: inline-block;
-      transition: background 0.2s, transform 0.15s;
-      letter-spacing: 0.01em;
-    }
-    .btn-cta:hover { background: #5aaa00; transform: translateY(-1px); }
+    .btn-dark:hover { opacity: 0.85; transform: translateY(-1px); }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 56px 0 36px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2.2fr 1fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 40px;
-    }
-    .footer-logo { margin-bottom: 12px; }
-    .footer-about { font-size: 0.85rem; color: var(--light-text); line-height: 1.7; max-width: 260px; font-weight: 300; }
-    .foot-col h5 {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--light-text);
-      margin-bottom: 16px;
-    }
-    .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .foot-col ul a { font-size: 0.875rem; color: var(--body-text); transition: color 0.2s; font-weight: 300; }
+    footer { background: var(--ink); padding: 56px 40px 36px; }
+    .foot-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 36px; }
+    .foot-desc { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.75; max-width: 240px; margin-top: 12px; }
+    .foot-col h5 { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .foot-col ul a { font-size: 0.875rem; color: rgba(255,255,255,0.55); font-weight: 500; transition: color 0.2s; }
     .foot-col ul a:hover { color: var(--green); }
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-bottom p { font-size: 0.78rem; color: var(--light-text); }
-    .footer-social { display: flex; gap: 8px; }
-    .footer-social a {
-      width: 32px; height: 32px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.72rem; font-weight: 600;
-      color: var(--light-text);
-      background: var(--white);
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .footer-social a:hover { color: var(--green); border-color: var(--green); }
-
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .nav-links.open {
-        display: flex; flex-direction: column;
-        position: fixed; top: 64px; left: 0; right: 0;
-        background: var(--white); padding: 20px 40px;
-        border-bottom: 1px solid var(--border); z-index: 99;
-      }
-      .nav-links.open li { padding: 7px 0; }
-      .services-grid, .test-grid { grid-template-columns: 1fr; }
-      .process-row { grid-template-columns: 1fr 1fr; }
-      .why-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .hero-stats { gap: 28px; }
-      .services-head { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 480px) {
-      .process-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; align-items: flex-start; }
-      .proc { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 0; }
-      .proc:last-child { border-bottom: none; }
-      .proc:not(:first-child) { padding-left: 0; }
-    }
+    .foot-bottom { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 10px; }
+    .foot-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+    .foot-socials { display: flex; gap: 8px; }
+    .foot-socials a { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 800; color: rgba(255,255,255,0.35); transition: color 0.2s, border-color 0.2s; }
+    .foot-socials a:hover { color: var(--green); border-color: var(--green); }
 
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: 0.08s; }
-    .d2 { transition-delay: 0.16s; }
-    .d3 { transition-delay: 0.24s; }
+    .d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.16s; } .d3 { transition-delay: 0.24s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 820px) {
+      .nav-links, .nav-btn { display: none; }
+      .hamburger { display: flex; }
+      .svc-grid, .test-grid { grid-template-columns: 1fr 1fr; }
+      .proc-grid { grid-template-columns: 1fr 1fr; border-radius: 16px; }
+      .proc-step:nth-child(2) { border-right: none; }
+      .proc-step:nth-child(1), .proc-step:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .why-grid, .intro-band-inner { grid-template-columns: 1fr; gap: 36px; }
+      .why-right { flex-direction: row; flex-wrap: wrap; padding-top: 0; }
+      .stat-card { flex: 1 1 160px; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      #hero, #services, .intro-band, #process, #why, #testimonials, #cta, footer { padding-left: 20px; padding-right: 20px; }
+      .svc-grid, .test-grid, .proc-grid { grid-template-columns: 1fr; }
+      .proc-step { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .proc-step:last-child { border-bottom: none; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .hero-btns, .hero-stats { flex-direction: column; }
+      .hstat { border-right: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .hstat:last-child { border-bottom: none; }
+      .stat-card { flex: 1 1 100%; }
+    }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="https://www.digiwinx.com" class="nav-logo">
   <img src="https://i.postimg.cc/7Ym7J44W/DIGIWINX-LOGO-(1).png" alt="DigiWinx Logo" style="width:200px;height:auto;">
-</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services"><h4>SERVICES</h4></a></li>
-      <li><a href="#process"><h4>PROCESS</h4></a></li>
-      <li><a href="#why"><h4>WHY US</h4></a></li>
-      <li><a href="#testimonials"><h4>RESULTS</h4></a></li>
-
-
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How it works</a></li>
+      <li><a href="#why">About</a></li>
+      <li><a href="#testimonials">Results</a></li>
     </ul>
-    <a href="#cta" class="nav-cta">Get started</a>
-    <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    <a href="#cta" class="nav-btn">Get started</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#process" onclick="toggleMenu()">How it works</a>
+    <a href="#why" onclick="toggleMenu()">About</a>
+    <a href="#testimonials" onclick="toggleMenu()">Results</a>
+    <a href="#cta" onclick="toggleMenu()">Get started →</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-content">
-    <div class="hero-label">Digital growth agency</div>
-    <h1>Helping small businesses<br/><em>grow online</em> with confidence.</h1>
-    <p class="hero-sub">From websites and content to e-commerce and ads — DigiWinx gives you everything you need to reach more customers and grow sustainably.</p>
-    <div class="hero-actions">
-      <a href="#cta" class="btn-primary">Book a free call</a>
-      <a href="#services" class="btn-outline">See our services</a>
+  <div class="hero-inner">
+    <div class="hero-badge"><span></span> Digital growth for small businesses</div>
+    <h1 class="hero-h1">Grow your business online,<br/><em>without the overwhelm.</em></h1>
+    <p class="hero-sub">DigiWinx helps small businesses build a real online presence — from websites and content to e-commerce and ads. We handle the digital side so you can focus on what you love.</p>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-green">Book a free strategy call</a>
+      <a href="#services" class="btn-ghost-white">See what we do</a>
     </div>
     <div class="hero-stats">
-      <div>
-        <div class="stat-val">20<sup>+</sup></div>
-        <div class="stat-lbl">Businesses grown</div>
-      </div>
-      <div>
-        <div class="stat-val">3<sup>×</sup></div>
-        <div class="stat-lbl">Average revenue lift</div>
-      </div>
-      <div>
-        <div class="stat-val">98<sup>%</sup></div>
-        <div class="stat-lbl">Client satisfaction</div>
-      </div>
-      <div>
-        <div class="stat-val">7<sup>yrs</sup></div>
-        <div class="stat-lbl">Years in business</div>
-      </div>
+      <div class="hstat"><div class="hstat-val">120<em>+</em></div><div class="hstat-lbl">Businesses helped</div></div>
+      <div class="hstat"><div class="hstat-val">3<em>×</em></div><div class="hstat-lbl">Average revenue growth</div></div>
+      <div class="hstat"><div class="hstat-val">98<em>%</em></div><div class="hstat-lbl">Happy clients</div></div>
+      <div class="hstat"><div class="hstat-val">5<em>yr</em></div><div class="hstat-lbl">In business</div></div>
     </div>
   </div>
 </section>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span>Web Design</span><span class="sep">✦</span>
-    <span>E-Commerce</span><span class="sep">✦</span>
-    <span>Content Creation</span><span class="sep">✦</span>
-    <span>SEO & Growth</span><span class="sep">✦</span>
-    <span>Social Media</span><span class="sep">✦</span>
-    <span>Brand Strategy</span><span class="sep">✦</span>
-    <span>Email Marketing</span><span class="sep">✦</span>
-    <span>Paid Ads</span><span class="sep">✦</span>
-    <span>Web Design</span><span class="sep">✦</span>
-    <span>E-Commerce</span><span class="sep">✦</span>
-    <span>Content Creation</span><span class="sep">✦</span>
-    <span>SEO & Growth</span><span class="sep">✦</span>
-    <span>Social Media</span><span class="sep">✦</span>
-    <span>Brand Strategy</span><span class="sep">✦</span>
-    <span>Email Marketing</span><span class="sep">✦</span>
-    <span>Paid Ads</span><span class="sep">✦</span>
-  </div>
-</div>
 
 <!-- SERVICES -->
 <section id="services">
-  <div class="container">
-    <div class="services-head">
-      <div>
-        <div class="eyebrow">What we do</div>
-        <h2>Everything a growing<br/>business needs.</h2>
-      </div>
-      <p class="lead">We're not a one-trick agency. From your first website to a full growth engine — all under one roof, one team.</p>
+  <div class="wrap">
+    <div class="sec-tag">What we do</div>
+    <h2 class="sec-h">Everything you need to <em>grow online.</em></h2>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card c1 reveal">
+      <div class="svc-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg></div>
+      <div class="svc-name">Website Development</div>
+      <p class="svc-desc">A website that looks great, loads fast, and turns visitors into customers. Built mobile-first, built for you.</p>
+      <div class="svc-pills"><span class="pill">WordPress</span><span class="pill">Shopify</span><span class="pill">Custom</span></div>
     </div>
-    <div class="services-grid reveal">
-      <div class="svc">
-        <svg class="svc-icon" viewBox="0 0 36 36" fill="none"><rect x="3" y="6" width="30" height="21" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M12 33h12M18 27v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 15l4.5 4.5L21 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="svc-name">Website Development</div>
-        <p class="svc-desc">Fast, beautiful, conversion-focused websites your customers actually enjoy using. Built mobile-first, always.</p>
-        <div class="svc-tags"><span class="tag">WordPress</span><span class="tag">Shopify</span><span class="tag">Custom</span></div>
-      </div>
-      <div class="svc">
-        <svg class="svc-icon" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="13" stroke="currentColor" stroke-width="1.8"/><path d="M18 6v24M6 18h24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="18" cy="18" rx="6" ry="13" stroke="currentColor" stroke-width="1.8"/></svg>
-        <div class="svc-name">E-Commerce Management</div>
-        <p class="svc-desc">Store setup, product listings, payments, logistics — we handle the operations so you can focus on your craft.</p>
-        <div class="svc-tags"><span class="tag">Shopify</span><span class="tag">WooCommerce</span><span class="tag">TikTok Shop</span></div>
-      </div>
-      <div class="svc">
-        <svg class="svc-icon" viewBox="0 0 36 36" fill="none"><rect x="4" y="10" width="28" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M12 4l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20h16M10 25h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        <div class="svc-name">Content Creation</div>
-        <p class="svc-desc">Reels, photos, copy, blogs — content that reflects your brand and is built for the platforms you need to be on.</p>
-        <div class="svc-tags"><span class="tag">Social</span><span class="tag">Video</span><span class="tag">Copywriting</span></div>
-      </div>
-      <div class="svc">
-        <svg class="svc-icon" viewBox="0 0 36 36" fill="none"><path d="M6 27L13.5 18l6 6L27 13.5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28.5" cy="10.5" r="3" fill="currentColor"/></svg>
-        <div class="svc-name">SEO & Growth Marketing</div>
-        <p class="svc-desc">Rank higher, get found faster. On-page SEO, local search, Google Business, and long-term organic strategy.</p>
-        <div class="svc-tags"><span class="tag">On-Page SEO</span><span class="tag">Local SEO</span><span class="tag">Analytics</span></div>
-      </div>
-      <div class="svc">
-        <svg class="svc-icon" viewBox="0 0 36 36" fill="none"><path d="M6 9h24v18a2 2 0 01-2 2H8a2 2 0 01-2-2V9z" stroke="currentColor" stroke-width="1.8"/><path d="M6 9l12 10.5L30 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="svc-name">Email & Retention</div>
-        <p class="svc-desc">Turn one-time buyers into regulars. Email flows, newsletters, and campaigns that keep customers coming back.</p>
-        <div class="svc-tags"><span class="tag">Klaviyo</span><span class="tag">Mailchimp</span><span class="tag">Automations</span></div>
-      </div>
-      <div class="svc">
-        <svg class="svc-icon" viewBox="0 0 36 36" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="20" y="4" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="20" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="20" y="20" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
-        <div class="svc-name">Paid Ads & Campaigns</div>
-        <p class="svc-desc">Meta, Google, TikTok — targeted campaigns that reach the right people and turn clicks into paying customers.</p>
-        <div class="svc-tags"><span class="tag">Meta Ads</span><span class="tag">Google Ads</span><span class="tag">TikTok</span></div>
-      </div>
+    <div class="svc-card c2 reveal d1">
+      <div class="svc-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18" stroke-linecap="round"/><ellipse cx="12" cy="12" rx="4" ry="9"/></svg></div>
+      <div class="svc-name">E-Commerce Management</div>
+      <p class="svc-desc">We set up and run your online store so you can focus on actually running your business.</p>
+      <div class="svc-pills"><span class="pill">Shopify</span><span class="pill">WooCommerce</span><span class="pill">TikTok Shop</span></div>
+    </div>
+    <div class="svc-card c3 reveal d2">
+      <div class="svc-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M15 10l-4 4-4-4M3 5h18v14a1 1 0 01-1 1H4a1 1 0 01-1-1V5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="svc-name">Content Creation</div>
+      <p class="svc-desc">Photos, videos, reels, captions. Content that sounds like you and stops people mid-scroll.</p>
+      <div class="svc-pills"><span class="pill">Social Media</span><span class="pill">Video</span><span class="pill">Copywriting</span></div>
+    </div>
+    <div class="svc-card c4 reveal">
+      <div class="svc-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M3 17l5-7 5 5 4-6 4 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="svc-name">SEO & Growth</div>
+      <p class="svc-desc">Show up when people search for what you offer. On-page, local, Google Business — all sorted.</p>
+      <div class="svc-pills"><span class="pill">On-Page SEO</span><span class="pill">Local SEO</span><span class="pill">Analytics</span></div>
+    </div>
+    <div class="svc-card c5 reveal d1">
+      <div class="svc-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v13a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/><path d="M4 4l8 9 8-9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="svc-name">Email Marketing</div>
+      <p class="svc-desc">Newsletters, flows, automations. Keep customers coming back without lifting a finger.</p>
+      <div class="svc-pills"><span class="pill">Klaviyo</span><span class="pill">Mailchimp</span><span class="pill">Automations</span></div>
+    </div>
+    <div class="svc-card c6 reveal d2">
+      <div class="svc-ico"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg></div>
+      <div class="svc-name">Paid Ads</div>
+      <p class="svc-desc">Meta, Google, TikTok — campaigns that reach the right people and turn clicks into real sales.</p>
+      <div class="svc-pills"><span class="pill">Meta Ads</span><span class="pill">Google Ads</span><span class="pill">TikTok Ads</span></div>
     </div>
   </div>
 </section>
 
-<hr class="rule">
+<!-- INTRO BAND -->
+<div class="intro-band">
+  <div class="intro-band-inner">
+    <h2>You're great at what you do.<br/><em>We make sure people find you.</em></h2>
+    <p>Most small businesses have something genuinely special — getting found online is just a different skill set. We take the digital work off your plate and turn it into measurable growth, without the jargon or the runaround.</p>
+  </div>
+</div>
 
 <!-- PROCESS -->
 <section id="process">
-  <div class="container">
-    <div class="eyebrow">How it works</div>
-    <h2>Simple from day one.</h2>
-    <div class="process-row">
-      <div class="proc reveal">
-        <div class="proc-n">1</div>
-        <div class="proc-title">Discovery call</div>
-        <p class="proc-desc">A free 30-minute session to understand your business, goals, and where you're stuck. No pitch, just listening.</p>
-      </div>
-      <div class="proc reveal d1">
-        <div class="proc-n">2</div>
-        <div class="proc-title">Custom roadmap</div>
-        <p class="proc-desc">We build a tailored plan — which services, in what order, and what results you can expect and when.</p>
-      </div>
-      <div class="proc reveal d2">
-        <div class="proc-n">3</div>
-        <div class="proc-title">We get to work</div>
-        <p class="proc-desc">Regular updates, transparent reporting, and a single point of contact who actually knows your project.</p>
-      </div>
-      <div class="proc reveal d3">
-        <div class="proc-n">4</div>
-        <div class="proc-title">Grow together</div>
-        <p class="proc-desc">Monthly reviews, continuous optimisation, and a long-term partnership focused on real results.</p>
-      </div>
+  <div class="wrap">
+    <div class="sec-tag">How it works</div>
+    <h2 class="sec-h">Simple from the <em>very first call.</em></h2>
+  </div>
+  <div class="proc-grid" style="max-width:1080px;margin:48px auto 0;">
+    <div class="proc-step reveal">
+      <div class="proc-num">1</div>
+      <div class="proc-title">We listen first</div>
+      <p class="proc-desc">A free 30-min call to understand your business and where you're stuck. No pitch, just an honest chat.</p>
+    </div>
+    <div class="proc-step reveal d1">
+      <div class="proc-num">2</div>
+      <div class="proc-title">We build your plan</div>
+      <p class="proc-desc">A clear roadmap tailored to you — services, timeline, and realistic results you can actually expect.</p>
+    </div>
+    <div class="proc-step reveal d2">
+      <div class="proc-num">3</div>
+      <div class="proc-title">We get to work</div>
+      <p class="proc-desc">Dedicated contact, regular updates, full visibility. No surprises, no disappearing acts.</p>
+    </div>
+    <div class="proc-step reveal d3">
+      <div class="proc-num">4</div>
+      <div class="proc-title">We grow together</div>
+      <p class="proc-desc">Monthly reviews, honest reporting, continuous improvement. Long term, not just the first invoice.</p>
     </div>
   </div>
 </section>
-
-<hr class="rule">
 
 <!-- WHY -->
 <section id="why">
-  <div class="container">
-    <div class="why-grid">
-      <div class="why-left reveal">
-        <div class="eyebrow">Why DigiWinx</div>
-        <h2>Built for businesses<br/>that <em>mean it.</em></h2>
-        <div class="why-points">
-          <div class="why-pt">
-            <div class="why-pt-dot"></div>
-            <div>
-              <div class="why-pt-title">Small business specialists</div>
-              <p class="why-pt-desc">We work exclusively with SMBs. Our process is built around your speed, budget, and ambitions — not those of enterprise clients.</p>
-            </div>
-          </div>
-          <div class="why-pt">
-            <div class="why-pt-dot"></div>
-            <div>
-              <div class="why-pt-title">Full-stack, one team</div>
-              <p class="why-pt-desc">No outside freelancers. Design, dev, content, ads — all handled in-house by a team that knows your brand inside out.</p>
-            </div>
-          </div>
-          <div class="why-pt">
-            <div class="why-pt-dot"></div>
-            <div>
-              <div class="why-pt-title">Accountable to outcomes</div>
-              <p class="why-pt-desc">Monthly reports with real numbers — traffic, conversions, revenue. We measure what matters, and you see everything.</p>
-            </div>
-          </div>
-          <div class="why-pt">
-            <div class="why-pt-dot"></div>
-            <div>
-              <div class="why-pt-title">No lock-in contracts</div>
-              <p class="why-pt-desc">We earn your business every month. Cancel anytime — though our clients rarely want to once the results come in.</p>
-            </div>
-          </div>
-        </div>
+  <div class="why-grid">
+    <div class="reveal">
+      <div class="sec-tag">Why DigiWinx</div>
+      <h2 class="sec-h">We genuinely care<br/>about <em>your growth.</em></h2>
+      <p class="why-lead">We built DigiWinx because small businesses deserve the same quality of digital support big companies take for granted — without the price tag or the runaround.</p>
+      <div class="why-pts">
+        <div class="why-pt"><div class="why-ico">✓</div><div><div class="why-pt-title">We only work with small businesses</div><p class="why-pt-desc">No enterprise clients stealing our attention. Every process we have is built around SMB budgets and timelines.</p></div></div>
+        <div class="why-pt"><div class="why-ico">✓</div><div><div class="why-pt-title">One team, everything in-house</div><p class="why-pt-desc">Design, dev, content, ads — all handled by our team. No freelancer hand-offs, no lost context.</p></div></div>
+        <div class="why-pt"><div class="why-ico">✓</div><div><div class="why-pt-title">You always know what's happening</div><p class="why-pt-desc">Monthly reports with real numbers. We tell you what's working, what isn't, and exactly what we're doing about it.</p></div></div>
+        <div class="why-pt"><div class="why-ico">✓</div><div><div class="why-pt-title">No lock-in contracts, ever</div><p class="why-pt-desc">Month-to-month only. We'd rather earn your trust every month than trap you in a contract.</p></div></div>
       </div>
-      <div class="why-right reveal d1">
-        <div class="why-card">
-          <div class="why-card-num">120<sup>+</sup></div>
-          <div class="why-card-lbl">Businesses we've grown</div>
-        </div>
-        <div class="why-card">
-          <div class="why-card-num">3<sup>×</sup></div>
-          <div class="why-card-lbl">Average revenue increase</div>
-        </div>
-        <div class="why-card">
-          <div class="why-card-num">98<sup>%</sup></div>
-          <div class="why-card-lbl">Client satisfaction rate</div>
-        </div>
-        <div class="why-card">
-          <div class="why-card-num">5<sup>yr</sup></div>
-          <div class="why-card-lbl">In business, still growing</div>
-        </div>
-      </div>
+    </div>
+    <div class="why-right reveal d1">
+      <div class="stat-card s1"><div class="stat-num">120<em>+</em></div><div class="stat-lbl">small businesses helped grow</div></div>
+      <div class="stat-card s2"><div class="stat-num">3<em>×</em></div><div class="stat-lbl">average increase in client revenue</div></div>
+      <div class="stat-card s3"><div class="stat-num">98<em>%</em></div><div class="stat-lbl">of clients would recommend us</div></div>
+      <div class="stat-card s4"><div class="stat-num">30<em>min</em></div><div class="stat-lbl">free call, no strings attached</div></div>
     </div>
   </div>
 </section>
 
-<hr class="rule">
-
 <!-- TESTIMONIALS -->
 <section id="testimonials">
-  <div class="container">
-    <div class="eyebrow">Client results</div>
-    <h2>Don't take our word for it.</h2>
-    <div class="test-grid">
-      <div class="test-card reveal">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-quote">"DigiWinx rebuilt our Shopify store and within three months our conversion rate had doubled. Best investment we made this year."</p>
-        <div class="test-author">
-          <div class="test-avatar">SL</div>
-          <div>
-            <div class="test-name">Sarah Lim</div>
-            <div class="test-role">Founder, Bloom Skincare</div>
-          </div>
-        </div>
-      </div>
-      <div class="test-card reveal d1">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-quote">"Our Instagram went from 800 to 12,000 followers in six months. The content they create actually looks and sounds like us."</p>
-        <div class="test-author">
-          <div class="test-avatar">JT</div>
-          <div>
-            <div class="test-name">James Tan</div>
-            <div class="test-role">Owner, The Wrap Co.</div>
-          </div>
-        </div>
-      </div>
-      <div class="test-card reveal d2">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-quote">"We finally rank on page one for our key terms. DigiWinx handled everything from the website to Google Business — and it shows."</p>
-        <div class="test-author">
-          <div class="test-avatar">MR</div>
-          <div>
-            <div class="test-name">Maria Reyes</div>
-            <div class="test-role">Director, Reyes Dental</div>
-          </div>
-        </div>
-      </div>
+  <div class="wrap">
+    <div class="sec-tag">Kind words from clients</div>
+    <h2 class="sec-h">Real results for <em>real businesses.</em></h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card reveal">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-q">"DigiWinx rebuilt our Shopify store and within three months our conversion rate had doubled. Honestly the best investment we've made."</p>
+      <div class="test-author"><div class="test-av">SL</div><div><div class="test-name">Sarah Lim</div><div class="test-role">Founder, Bloom Skincare</div></div></div>
+    </div>
+    <div class="test-card reveal d1">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-q">"Instagram went from 800 to 12,000 followers in six months. The content actually sounds like us — not like a brand trying too hard."</p>
+      <div class="test-author"><div class="test-av">JT</div><div><div class="test-name">James Tan</div><div class="test-role">Owner, The Wrap Co.</div></div></div>
+    </div>
+    <div class="test-card reveal d2">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-q">"We finally show up on page one for searches that matter. DigiWinx handled everything — website, SEO, Google Business — and it shows."</p>
+      <div class="test-author"><div class="test-av">MR</div><div><div class="test-name">Maria Reyes</div><div class="test-role">Director, Reyes Dental</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section id="cta">
-  <div class="container">
-    <div class="eyebrow">Ready to grow?</div>
-    <h2>Let's build something<br/><em>that works.</em></h2>
-    <p>Book a free 30-minute strategy call. We'll map out exactly what your business needs — no hard sell, just a clear plan.</p>
-    <a href="mailto:hello@digiwinx.com" class="btn-cta">Book your free call</a>
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-h">Let's talk about<br/><em>your business.</em></h2>
+      <p class="cta-sub">Book a free 30-minute call. We'll look at where you are, where you want to be, and map out an honest plan to get there.</p>
+    </div>
+    <a href="mailto:hello@digiwinx.com" class="btn-dark">Book your free call →</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
+  <div class="foot-grid">
+    <div>
       <a href="https://www.digiwinx.com" class="nav-logo footer-logo">
   <img src="https://i.postimg.cc/7Ym7J44W/DIGIWINX-LOGO-(1).png" alt="DigiWinx Logo" style="width:150px;height:auto;margin-left:-10px;">
-</a>
-        <p class="footer-about">Helping small businesses grow online — websites, content, e-commerce, and ads. All in one place.</p>
-      </div>
-      <div class="foot-col">
-        <h5>Services</h5>
-        <ul>
-          <li><a href="#services">Web Development</a></li>
-          <li><a href="#services">E-Commerce</a></li>
-          <li><a href="#services">Content Creation</a></li>
-          <li><a href="#services">SEO & Growth</a></li>
-          <li><a href="#services">Paid Ads</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#why">About us</a></li>
-          <li><a href="#process">How it works</a></li>
-          <li><a href="#testimonials">Results</a></li>
-          <li><a href="#cta">Contact</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Get in touch</h5>
-        <ul>
-          <li><a href="mailto:hello@digiwinx.com">hello@digiwinx.com</a></li>
-          <li><a href="tel:+6500000000">+65 8310 5112</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-        </ul>
-      </div>
+      <p class="foot-desc">Helping small businesses grow online — websites, content, e-commerce, and ads. All under one roof.</p>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 DigiWinx <br> All rights reserved.</p>
-      <div class="footer-social">
-      <!-- <a href="#">IG</a>
-        <a href="#">in</a>
-        <a href="#">TK</a>
-        <a href="#">FB</a> -->
-      </div>
-    </div>
+    <div class="foot-col"><h5>Services</h5><ul><li><a href="#services">Web Development</a></li><li><a href="#services">E-Commerce</a></li><li><a href="#services">Content Creation</a></li><li><a href="#services">SEO & Growth</a></li><li><a href="#services">Paid Ads</a></li></ul></div>
+    <div class="foot-col"><h5>Company</h5><ul><li><a href="#why">About us</a></li><li><a href="#process">How it works</a></li><li><a href="#testimonials">Results</a></li><li><a href="#cta">Contact</a></li></ul></div>
+    <div class="foot-col"><h5>Get in touch</h5><ul><li><a href="mailto:hello@digiwinx.com">hello@digiwinx.com</a></li><li><a href="tel:+6500000000">+65 0000 0000</a></li><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2025 DigiWinx. All rights reserved.</p>
+    <div class="foot-socials"><a href="#">IG</a><a href="#">in</a><a href="#">TK</a><a href="#">FB</a></div>
   </div>
 </footer>
 
 <script>
-  function toggleNav() {
-    document.getElementById('navLinks').classList.toggle('open');
+  function toggleMenu() {
+    const m = document.getElementById('mobMenu');
+    m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
   }
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  const secs = document.querySelectorAll('section[id]');
-  const links = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let cur = '';
-    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
-    links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--black)' : ''; });
-  });
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
+
